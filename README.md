@@ -15,3 +15,39 @@ I strongly recommend you to have coding and Python knowledge. Do not hesitate to
 Please follow the README of futu-endpoint and then webhook.
 
 # How to test
+
+Send POST request with below JSON content to http://your-domain/webhook
+It will place a order from FLAT to LONG.
+
+```
+{
+  "passphrase": "ioXjHyG8uR",
+  "title": "",
+  "time": "2022-11-07T22:00:00Z",
+  "exchange": "BATS",
+  "ticker": "MSFT",
+  "bar": {
+    "time": "2022-11-07T15:40:00Z",
+    "open": "302.38",
+    "high": "302.84",
+    "low": "302.06",
+    "close": "302.43",
+    "volume": "29534"
+  },
+  "strategy": {
+    "position_size": "30",
+    "order_action": "buy",
+    "order_contracts": "14",
+    "order_price": "302.43",
+    "order_id": "",
+    "market_position": "long",
+    "market_position_size": "24",
+    "prev_market_position": "flat",
+    "prev_market_position_size": "0"
+  },
+  "is_auto": true,
+  "market": "US",
+  "environment": "SIMULATE",
+  "currency": "USD"
+}
+```
