@@ -9,7 +9,18 @@ This docker container aims to create FutuOpenD as endpoint to communicate with W
 2. Run below command to build container and run
 
 ```
-$ docker build -t py-futu-opend .
+$ md5 -s YOUR_PASSWORD
+# Copy the hash, example result would be:
+# MD5("YOUR_PASSWORD") = YOUR_PASSWORD_HASH
+
+
+# Standard amd64 environment
+$ docker build -t py-futu-opend -f ./Dockerfile .
+
+$ docker run -d -t -i -e FUTU_LOGIN_ACCOUNT='YOUR_FUTU_ACCOUNT' -e FUTU_LOGIN_PASSWORD_HASH='YOUR_PASSWORD_HASH' -p 11111:11111 -p 22222:22222 -p 33333:33333 --name py-futu-opend py-futu-opend
+
+# Running under Mac M1/M2 environment
+$ docker build -t py-futu-opend -f ./Dockerfile.x86_64 .
 
 $ docker run --platform=linux/x86_64 -d -t -i -e FUTU_LOGIN_ACCOUNT='YOUR_FUTU_ACCOUNT' -e FUTU_LOGIN_PASSWORD_HASH='YOUR_PASSWORD_HASH' -p 11111:11111 -p 22222:22222 -p 33333:33333 --name py-futu-opend py-futu-opend
 ```
@@ -31,3 +42,13 @@ $ input_phone_verify_code -code=[YOUR_SIX_DIGITS_CODE]
 ```
 $ cat futu.pem
 ```
+
+## Change Log
+
+- 2023-01-03
+  - Project Init
+- 2023-01-04
+  - Update LICENSE
+- 2023-02-11
+  - Update user guide
+  - Update bash script to automatically update account info
